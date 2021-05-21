@@ -107,7 +107,7 @@ class EmployeeController extends Controller
         $request->validate([
             'name' => 'required',
             'contact' => 'required|numeric',
-            'email' => 'required|email',
+            'email' => 'required|unique:employees,email',
         ]);
 
         try {
