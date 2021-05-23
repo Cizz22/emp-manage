@@ -20,7 +20,7 @@ class EmployeeController extends Controller
         $emp = Employee::with(['departement','payment'])->get();
 
         $response = [
-            'message' => 'List Data Departement',
+            'message' => 'List Data Karyawan',
             'data' => $emp
         ];
 

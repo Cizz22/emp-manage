@@ -57,19 +57,21 @@ class AuthController extends Controller
         if(!$user || !Hash::check($field['password'], $user->password)){
             return response([
                 'message' => 'Pass atau email salah'
-            ]);
+            ], Response::HTTP_UNAUTHORIZED);
         }
 
 
         $token = $user->createToken('Token')->plainTextToken;
 
-        $response = [
-            'message'=> 'Login Successfully',
-            'user' => $user,
-            'token' => $token
-        ];
+        return response()->json([
+            'token'=> $token,
+            'user' => $user
+        ]);
+    }
 
-        return response()->json($response,201);
+    public function user() {
+       $user = User::find(Auth()->id());
+        return response()->json($user);
     }
 
 }

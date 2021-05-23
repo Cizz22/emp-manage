@@ -33,4 +33,5 @@ Route::group( ['middleware' => ['auth:sanctum']] ,function () {
     Route::post('/employee/payment', [EmployeeController::class , 'payment']);
     Route::delete('employee/payment/delete/{id}', [EmployeeController::class, 'destroyPayment']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/me', [AuthController::class, 'user']);
 });

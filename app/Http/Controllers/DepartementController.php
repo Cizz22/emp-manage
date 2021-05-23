@@ -46,7 +46,7 @@ class DepartementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:departements, name',
+            'name' => 'required|unique:departements,name',
         ]);
 
         try {
@@ -127,6 +127,7 @@ class DepartementController extends Controller
      */
     public function destroy($id)
     {
+        Departement::find($id)->employee->departement_id = null ;
         Departement::destroy($id);
         $response = [
             'message' => 'Data Berhasil Dihapus'
